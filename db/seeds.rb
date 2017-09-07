@@ -41,10 +41,17 @@ users.each do |user|
   user.roles << roles[1]
 end
 
-donations = Donation.create!([
-  { timestamp: DateTime.new(2017, 8, 10, 14, 0, 0), user: users[0] },
-  { timestamp: DateTime.new(2017, 9, 10, 14, 0, 0), user: users[0] },
-  { timestamp: DateTime.new(2017, 8, 10, 15, 0, 0), user: users[1] },
-  { timestamp: DateTime.new(2017, 8, 10, 14, 15, 0), user: users[2] },
-  { timestamp: DateTime.new(2017, 7, 10, 10, 0, 0), user: users[0] }
-])
+d = Donation.new timestamp: DateTime.new(2017, 8, 10, 14, 0, 0), user: users[0]
+d.save validate: false
+
+d = Donation.new timestamp: DateTime.new(2017, 9, 10, 14, 0, 0), user: users[0]
+d.save validate: false
+
+d = Donation.new timestamp: DateTime.new(2017, 8, 10, 15, 0, 0), user: users[1]
+d.save validate: false
+
+d = Donation.new timestamp: DateTime.new(2017, 8, 10, 14, 15, 0), user: users[2]
+d.save validate: false
+
+d = Donation.new timestamp: DateTime.new(2017, 7, 10, 10, 0, 0), user: users[0]
+d.save validate: false
